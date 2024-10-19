@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.btn {
+  padding: 12px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.passss {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: color 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.pass {
+  font-weight: bold;
+  color: #007BFF;
+  transition: color 0.3s;
+}
+
+.passss:hover {
+  color: #555;
+  background-color: #f9f9f9;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.pass:hover {
+  color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <button class="btn">Generate Random Password</button>
+    <p class="passss">Password : <span class="pass"></span></p>
+</body>
+<script>
+
+    const randompass=(len)=>{
+        const character='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?';
+        let pass=''
+        for(let i=0;i<len;i++){
+            const index=Math.floor(Math.random()*character.length);
+            pass+=character[index];
+        }
+        return pass;
+    }
+
+
+    const btn=document.querySelector('.btn');
+    btn.addEventListener("click",function(){
+        const passlen=prompt("enter the password length :");
+        if(passlen!==null || passlen>0 && !isNaN(passlen)){
+            const password=randompass(passlen);
+            document.querySelector(".pass").textContent=password;
+            // return d;
+        }
+        else{
+            alert("enter valid length of pasword");
+        }
+
+    })
+</script>
+</html>
